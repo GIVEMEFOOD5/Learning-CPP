@@ -66,5 +66,4 @@ int main()
    {
       divide();
    }
-   return 0;
 }

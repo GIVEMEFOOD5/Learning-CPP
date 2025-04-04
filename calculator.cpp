@@ -48,8 +48,8 @@ int main()
       lastFirstDigit = symbol - 1;
       firstLastDigit = symbol + 1;
       last = equation.back();
-      int x = std::stoi(equation.substr(0,equation.find_first_of('*')));
-      int y = std::stoi(equation.substr(equation.find_first_of('*')+1, std::string::npos));
+      x = std::stoi(equation.substr(0,equation.find_first_of('*')));
+      y = std::stoi(equation.substr(equation.find_first_of('*')+1, std::string::npos));
       calculation = "multiplication";
    }
 
@@ -59,8 +59,8 @@ int main()
       lastFirstDigit = symbol - 1;
       firstLastDigit = symbol + 1;
       last = equation.back();
-      int x = std::stoi(equation.substr(0,equation.find_first_of('+')));
-      int y = std::stoi(equation.substr(equation.find_first_of('+')+1, std::string::npos));
+      y = std::stoi(equation.substr(equation.find_first_of('+')+1, std::string::npos));
+      x = std::stoi(equation.substr(0,equation.find_first_of('+')));
       calculation = "addition";
    }
 
@@ -70,8 +70,8 @@ int main()
       lastFirstDigit = symbol - 1;
       firstLastDigit = symbol + 1;
       last = equation.back();
-      int x = std::stoi(equation.substr(0,equation.find_first_of('-')));
-      int y = std::stoi(equation.substr(equation.find_first_of('-')+1, std::string::npos));
+      x = std::stoi(equation.substr(0,equation.find_first_of('-')));
+      y = std::stoi(equation.substr(equation.find_first_of('-')+1, std::string::npos));
       calculation = "subtraction";
    }
    else if (equation.find("/") != std::string::npos)
@@ -80,8 +80,8 @@ int main()
       lastFirstDigit = symbol - 1;
       firstLastDigit = symbol + 1;
       last = equation.back();
-      int x = std::stoi(equation.substr(0,equation.find_first_of('/')));
-      int y = std::stoi(equation.substr(equation.find_first_of('/')+1, std::string::npos));
+      y = std::stoi(equation.substr(equation.find_first_of('/')+1, std::string::npos));
+      x = std::stoi(equation.substr(0,equation.find_first_of('/')));
       calculation = "division";
    }
    else 

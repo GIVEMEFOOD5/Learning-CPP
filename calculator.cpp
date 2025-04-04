@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 
-int v;
-int w;
+int last;
+int firstLastDigit;
+int lastFirstDigit;
 int x;
 int y;
-int z;
+int symbol;
 float sum;
 std::string calculation;
 std::string equation;
@@ -19,30 +21,18 @@ void addition()
 
 void subtraction() 
 {
-   std::cout << "Type a first: ";
-   std::cin >> x;
-   std::cout << "Type a second number: ";
-   std::cin >> y;
    sum = x - y;
    std::cout << "the sum of your numbers are: " << sum;
 }
 
 void divide() 
 {
-   std::cout << "Type a number: ";
-   std::cin >> x;
-   std::cout << "Enter another number: ";
-   std::cin >> y;
    sum = x / y;
    std::cout << "the sum of your numbers are: " << sum;
 }
 
 void multiply()
 {
-   std::cout << "Type a number: ";
-   std::cin >> x;
-   std::cout << "Enter another number: ";
-   std::cin >> y;
    sum = x * y;
    std::cout << "the sum of your numbers are: " << sum;
 }
@@ -54,21 +44,49 @@ int main()
 
    if (equation.find("*") != std::string::npos)
    {
+      symbol = equation.find_first_of('*');
+      lastFirstDigit = symbol - 1;
+      firstLastDigit = symbol + 1;
+      last = equation.back();
+      x = std::stoi(equation.substr(0,equation.find_first_of('*')));
+      y = std::stoi(equation.substr(firstLastDigit, std::string::npos));
       calculation = "multiplication";
    }
 
    else if (equation.find("+") != std::string::npos)
    {
-      z = equation.find_first_of('+');
-      w = z - 1;
-      v = z + 1;
-      equation.substr(0, w);
-      equation.substr(v, )
+      symbol = equation.find_first_of('+');
+      lastFirstDigit = symbol - 1;
+      firstLastDigit = symbol + 1;
+      last = equation.back();
+      x = std::stoi(equation.substr(0,equation.find_first_of('+')));
+      y = std::stoi(equation.substr(firstLastDigit, std::string::npos));
       calculation = "addition";
    }
+
    else if (equation.find("-") != std::string::npos)
    {
+      symbol = equation.find_first_of('-');
+      lastFirstDigit = symbol - 1;
+      firstLastDigit = symbol + 1;
+      last = equation.back();
+      x = std::stoi(equation.substr(0,equation.find_first_of('-')));
+      y = std::stoi(equation.substr(firstLastDigit, std::string::npos));
       calculation = "subtraction";
+   }
+   else if (equation.find("/") != std::string::npos)
+   {
+      symbol = equation.find_first_of('/');
+      lastFirstDigit = symbol - 1;
+      firstLastDigit = symbol + 1;
+      last = equation.back();
+      x = std::stoi(equation.substr(0,equation.find_first_of('/')));
+      y = std::stoi(equation.substr(firstLastDigit, std::string::npos));
+      calculation = "division";
+   }
+   else 
+   {
+      return 0;
    }
 
    if (calculation == "addition")
@@ -83,8 +101,13 @@ int main()
    {
       multiply();
    }
-   else
+   else if (calculation == "division")
    {
       divide();
+   }
+
+   else 
+   {
+      return 0;
    }
 }
